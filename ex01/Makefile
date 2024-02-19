@@ -36,10 +36,10 @@ RESET	= \033[0m
 
 ${NAME} : 	${OBJS}
 		@echo "${GREEN} Compiling... ${RESET}"
-		@${CC} ${CFLAGS} -I ${INCLUDES} ${SRCS} -o ${NAME}
+		@${CC} ${CFLAGS} -I ${INCLUDES} ${OBJS} -o ${NAME}
 		@echo "${MOV_U}${ERASE_ALL}${RED} Done ${RESET}"
 
-%.o 	: %.c
+%.o 	: %.cpp
 		@${CC} ${CFLAGS} -I ${INCLUDES} -c $< -o $@
 
 all 	: 	${NAME}
@@ -57,4 +57,4 @@ fclean	: clean
 
 re		: fclean all
 
-.PHONY	: all clean fclean re ${NAME}
+.PHONY	: all clean fclean re
